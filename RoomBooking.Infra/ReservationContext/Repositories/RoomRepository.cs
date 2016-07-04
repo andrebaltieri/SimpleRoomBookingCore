@@ -11,6 +11,7 @@ namespace RoomBooking.Infra.ReservationContext.Repositories
     {
         const string SELECT_QUERY = "SELECT * FROM public.\"Room\"";
         const string INSERT_QUERY = "INSERT INTO public.\"Room\" values(@Id, @Title)";
+        
         private IUnitOfWork _uow;
 
         public RoomRepository(IUnitOfWork uow)
@@ -27,7 +28,7 @@ namespace RoomBooking.Infra.ReservationContext.Repositories
         }
 
         public Room Create(Room room){
-            var affectedRows = _uow
+            _uow
                 .GetCurrentConnection()
                 .Execute(INSERT_QUERY, room);
 
