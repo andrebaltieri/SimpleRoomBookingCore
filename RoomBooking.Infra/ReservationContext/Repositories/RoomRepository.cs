@@ -27,7 +27,7 @@ namespace RoomBooking.Infra.ReservationContext.Repositories
         }
 
         public Room Create(Room room){
-            _uow
+            var affectedRows = _uow
                 .GetCurrentConnection()
                 .Execute(INSERT_QUERY, room);
 

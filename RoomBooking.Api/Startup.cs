@@ -26,7 +26,7 @@ namespace RoomBooking.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.Add(new ServiceDescriptor(typeof(IUnitOfWork), typeof(UnitOfWork), ServiceLifetime.Scoped));
             services.AddTransient<IRoomRepository, RoomRepository>();
         }
 
